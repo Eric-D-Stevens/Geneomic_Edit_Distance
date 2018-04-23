@@ -13,16 +13,19 @@ To run the script, simply enter `Python2.7 EditDistance.py`
 
 This script was written for Python 2.7.14 and requires no libraries.
 
-##Input and Output 
+## Input and Output 
 
 ### Input
 
+While there are no command line inputs to run this script, the program does rely on two
+file inputs for its operation. The first of these input files contains the gene sequences 
+themselves. The second file contains the cost lookup table utilzed to calculate the edit 
+costs.
+
 #### Gene Sequences
 
-While there are no command line inputs to run this script, the program does rely on two
-file inputs for its operation. The first file is named `imp2input.txt`. This file contains 
-the input gene sequences for which the edit distances will be calculated. The format for 
-this file is as follows:
+The first file is named `imp2input.txt`. This file contains the input gene sequences for 
+which the edit distances will be calculated. The format for this file is as follows:
 
 ```
 CGCAATTCTGAAGCGCTGGGGAAGACGGGT,TATCCCATCGAACGCCTATTCTAGGAT
@@ -55,6 +58,40 @@ that are used to represent the chemical makeup of a gene sequence. These values 
 to end to create a symmetric matrix that will serve as a look up table when performing edit 
 operations. The '-' symbol in table is a lookup for doing an insert operation.
 
+<br />
+
+It should also be noted that this table can be altered to the users desire in order to achieve 
+an alternative edit cost behavior.
+
 ### Output
 
-xxx
+The result of running this script will be an output directly to the terminal that consists of the 
+original strings, the edited strings,  and the resulting minimum edit distance cost. The format of 
+the output is as follows:
+
+```
+CGCAATTCTGAAGCGCTGGGGAAGACGGGT , TATCCCATCGAACGCCTATTCTAGGAT
+C--GCAATTCTGAAGCGCTGGGGAAGAC--GGG-T,TATCCCATCGA-ACGC-CT----AT-TCTAGG-AT:24
+
+
+AGTTGTGAAAGAACAAGCGCACAATATTGCCGCGCCGAAAGCT , TTCTTTCATTATTCAAATGTATAGTTTAGAGCGTTAA
+AGTTGTGAAAGAACAAGCGCACAA-TATTGCCGC-GC-CGAAAGCT,--TTCT-TTC-ATTAT-T-CAAATGTATAGTT-TAGAGCGTTA-A-:31
+
+...
+...
+
+...
+...
+
+
+TAAACCTAGGCATGTCTGTTTCG , TATAGAGCAGGTTCAAAACCAATGCGCTTCAATA
+TAAAC--C---TAG----GCA-TGT-CTGTT--TCG,TATAGAGCAGGTTCAAAACCAATGCGCT-TCAATA-:23
+```
+
+In each of these line seperated sets, the first line is the two original strings and the second 
+line consists of the edits made to match the strings followed by the calculated score after the 
+colon.
+
+
+
+
